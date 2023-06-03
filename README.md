@@ -18,3 +18,5 @@ A Solana based web3 app that rewards users when they map in the openstreetmaps n
 7. autoprefixer
 8. eslint
 9. eslint-config-next
+10. react-hot-toast
+11. Solana/web3.js
