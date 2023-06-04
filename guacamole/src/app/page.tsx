@@ -2,7 +2,6 @@
 // Imports
 import toast, { Toaster } from "react-hot-toast";
 import React, { useState, useEffect} from "react";
-import * as solanaWeb3 from "@solana/web3.js";
 
 // Main page
 const Main = () => {
@@ -46,7 +45,6 @@ const Main = () => {
         if (window) {
             window.localStorage.removeItem("pubkey");
             setpubKey(null);
-            //Router.reload(window?.location?.pathname);
         };
     };
 
