@@ -2,7 +2,7 @@
 // Imports
 import toast, { Toaster } from "react-hot-toast";
 import React, { useState, useEffect} from "react";
-import './main.css';
+import 'styles/page.css';
 import { useRouter } from "next/router";
 import {
     Connection,
@@ -13,7 +13,7 @@ import {
     clusterApiUrl,
     SendTransactionError,
     SOLANA_SCHEMA,
-} from "@solana/web3.js"
+} from "node_modules/@solana/web3.js"
 
 const SOLANA_NETWORK = "devnet";
 
@@ -86,15 +86,24 @@ const Main = () => {
         };
     };
 
-
     return ( 
         <>
-            <div className="main-container">
-            <div className="flex flex-col w-screen h-screen bg-black">
+            <div className="main-container h-full">
+                <div className="banner-container">
+                    <div className="logo-container">
+                    </div>
+                    <div className="sections-container">
+                        <div className="section">
+
+                        </div>
+                        <div className="section">
+
+                        </div>
+                    </div>
+                </div>
+            <div className="flex flex-col w-screen h-screen">
                 <div className="flex flex-col py-24  place-items-center justify-center">
-                    <h1 className="title">
-                        Guacamoleeee!
-                    </h1>
+                    <img src="guacamole_imagotype.png" alt="logo" width="300px"/>
                 </div>
                 
                 {pubkey ? (
@@ -109,7 +118,7 @@ const Main = () => {
                             Wallet balance: {balance} SOL
                         </h1>
                         <br />
-                        <div className="flex flex-col place-items-center justify-center">
+                        <div className="button">
                             <button
                                 type="submit"
                                 className="inline-flex h-8 w-52 justify-center font-bold bg-purple-500 text-white"
@@ -122,7 +131,7 @@ const Main = () => {
                     <div className="flex flex-col place-items-center justify-center">
                         <button 
                             type="submit" 
-                            className="inline-flex h-8 w-52 justify-center bg-purple-500 font-bold text-white"
+                            className="button"
                             onClick={() => {WalletSignIn();}}>
                             Make me a toast
                         </button>
