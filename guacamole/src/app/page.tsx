@@ -1,17 +1,18 @@
 'use client';
 // Imports
 import toast, { Toaster } from "react-hot-toast";
-import { Connection, PublicKey } from '@solana/web3.js';
-
-// Global declaration
-const notify = () => toast('Here is your toast.');
+import React, { useState, useEffect} from "react";
 
 // Main page
 const Main = () => {
+    const [pubkey, setpubKey] = useState(null);    // Declare publickey methods
+    useEffect(() => {}, [pubkey]);                 // Update value of pubkey to remove null in first button click
+
+
     const WalletSignIn = async () => {
         // Detect if phantom is installed
         const getProvider = () => {
-            if ('phantom' in window) {    // Check if phantom is installed
+            if ('phantom' in window) {             // Check if phantom is installed
                 const provider = window.phantom?.solana;
                 if (provider?.isPhantom) {
                     return provider;
@@ -20,16 +21,17 @@ const Main = () => {
             window.open('https://phantom.app/', '_blank');
         };
 
+          
         // If phantom is installed
         const provider = getProvider();
         try {
-            const resp = await provider.connect();
-            console.log(resp.publicKey.toString());
-        } catch (err) {
+            const resp   = await provider.connect();      // Retrieve the wallet
+            const _key   = resp.publicKey.toString();     // Get wallet pubkey
+            setpubKey(_key);                              // Assign public key to global
+        } catch (error) {
             // { code: 4001, message: 'User rejected the request.' }
-        }
-
-
+            console.log("ERROR: 101",error);
+        };
     };
 
 
