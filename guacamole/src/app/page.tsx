@@ -43,15 +43,34 @@ const Main = () => {
                         Guacamoleeee!
                     </h1>
                 </div>
-                <div className="flex flex-col place-items-center justify-center">
-                    <button 
-                        type="submit" 
-                        className="inline-flex h-8 w-52 justify-center bg-purple-500 font-bold text-white"
-                        onClick={() => {WalletSignIn();}}>
-                        Make me a toast
-                    </button>
-                    <Toaster />
-                </div>
+                
+                {pubkey ? (
+                    <div className="flex flex-col place-items-center justify-center">
+                        <br />
+                        <h1 className="text-2x1 font-bold text-white">
+                            Your wallet number is {pubkey}
+                        </h1>
+                        <br />
+                        <div className="flex flex-col place-items-center justify-center">
+                            <button
+                                type="submit"
+                                className="inline-flex h-4 justify-center font-bold text-white"
+                                onClick={() => {WalletSignIn();}}>
+                                    Disconnect wallet
+                            </button>
+                        </div>
+                    </div>
+                ) : (
+                    <div className="flex flex-col place-items-center justify-center">
+                        <button 
+                            type="submit" 
+                            className="inline-flex h-8 w-52 justify-center bg-purple-500 font-bold text-white"
+                            onClick={() => {WalletSignIn();}}>
+                            Make me a toast
+                        </button>
+                        <Toaster />
+                    </div>
+                )};
             </div>
         </>
     );
