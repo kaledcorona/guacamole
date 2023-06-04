@@ -85,10 +85,24 @@ const Main = () => {
             toast.error("Something went wrong while getting the balance")
         };
     };
+    const gotopage=async()=>{
+        window.open('https://youtube.com', '_blank');
+    }
 
     return ( 
+        
         <>
-            <div className="main-container h-full">
+        <header style={{backgroundColor:"#3b5998"}}>
+            <img src="guacamole_imagotype.png" alt="main-logo" width="500px"/>
+            <nav style={{textAlign:"center",position: "absolute", top: 90, right: 250}}>
+            <a href="#home" className="nav-link">Home</a>
+            <a href="#about" className="nav-link">About</a>
+            <a href="#contact" className="nav-link">Contact</a>
+            </nav>
+        </header>
+
+            <div className="main-container">
+                
                 <div className="banner-container">
                     <div className="logo-container">
                     </div>

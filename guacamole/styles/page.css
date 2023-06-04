@@ -1,18 +1,35 @@
+
+
 .main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2%;
-  background-color: #e8eae9;
-  margin-top: 15%;
+  padding:18.5%;
+  background-image: url('https://media0.giphy.com/media/MQTF1uW0GTZoVsseXx/giphy.gif?cid=6c09b9520acdb70bd0c06f60bed40ac8ecf7d811ab800c55&ep=v1_internal_gifs_gifId&rid=giphy.gif&ct=g');
+  background-size: cover;
+}
+  .nav-link {
+    text-decoration: none;
+    padding: 10px;
+    align-items: center;
+    display: left;
+    height: 3rem;
+    width: 12rem;
+    justify-content: center;
+    background-color: rgb(27, 141, 218);
+    color: white;
+    font-weight: bold;
+  }
+  .nav-link:hover {
+    color: rgb(16, 149, 211);
   }
   
   .title {
     font-size: 5rem;
     font-weight: bold;
     color: #3cb371;
-    padding-bottom: 10px;
+    padding-bottom: 100px;
   }
   
   .wallet-info {
@@ -24,7 +41,7 @@
   }
   
   .button {
-    display: inline-flex;
+    display: left;
     height: 3rem;
     width: 12rem;
     justify-content: center;
@@ -32,13 +49,13 @@
     color: white;
     font-weight: bold;
   }
-  
   .button:hover {
-    background-color: #800080;
+    background-color: #bd20bd;
     cursor: pointer;
   }
   
   .banner-container {
-    width: 100%;
-    height: 20%;
+    width: 0%;
+    height: 0%;
+    
   }
