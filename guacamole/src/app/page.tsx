@@ -2,15 +2,35 @@
 // Imports
 import toast, { Toaster } from "react-hot-toast";
 import React, { useState, useEffect} from "react";
+import { useRouter } from "next/router";
+import {
+    Connection,
+    SystemProgram,
+    Transaction,
+    PublicKey,
+    LAMPORTS_PER_SOL,
+    clusterApiUrl,
+    SendTransactionError,
+    SOLANA_SCHEMA,
+} from "@solana/web3.js"
+
+const SOLANA_NETWORK = "devnet";
 
 // Main page
 const Main = () => {
-    const [pubkey, setpubKey] = useState(null);    // Declare publickey methods
+    const [pubkey, setpubKey]   = useState(null);    // Declare publickey methods
+    const [balance, setBalance] = useState(0);       // Declare balance account
     useEffect(() => {
         let key = window.localStorage.getItem("pubkey");
         // @ts-ignore
         setpubKey(key);
-    }, [pubkey]);                 // Update value of pubkey to remove null in first button click
+    }, [pubkey]);                    // Update value of pubkey to remove null in first button click
+
+    useEffect(() => {
+        let _balance = window.localStorage.getItem("balance_wallet");
+        // @ts-ignore
+        setBalance(_balance);
+    })
 
 
     const WalletSignIn = async () => {
@@ -38,6 +58,7 @@ const Main = () => {
             // { code: 4001, message: 'User rejected the request.' }
             console.log("ERROR: 101",error);
         };
+        getbalance(pubkey);
     };
 
     // @ts-ignore
@@ -45,6 +66,20 @@ const Main = () => {
         if (window) {
             window.localStorage.removeItem("pubkey");
             setpubKey(null);
+        };
+    };
+
+    const getbalance = async (publicKey) => {
+        try {
+            const connection = new Connection(clusterApiUrl(SOLANA_NETWORK),"confirmed");
+            const balance    = await connection.getBalance(new PublicKey(pubkey));
+            const _balance   = balance / LAMPORTS_PER_SOL;
+            // @ts-ignore
+            setBalance(_balance);
+            window.localStorage.setItem("balance_wallet",balance.toString());
+        } catch (error) {
+            console.log("Error getting balance:", error);
+            toast.error("Something went wrong while getting the balance")
         };
     };
 
@@ -63,6 +98,11 @@ const Main = () => {
                         <br />
                         <h1 className="text-5x1 font-bold pb-5 text-white">
                             Your wallet number is {pubkey}
+                        </h1>
+                        <br />
+                        <br />
+                        <h1 className="text-5x1 font-bold pb-5 text-white">
+                            Wallet balance: {balance} SOL
                         </h1>
                         <br />
                         <div className="flex flex-col place-items-center justify-center">
