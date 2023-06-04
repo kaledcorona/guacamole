@@ -2,6 +2,7 @@
 // Imports
 import toast, { Toaster } from "react-hot-toast";
 import React, { useState, useEffect} from "react";
+import './main.css';
 import { useRouter } from "next/router";
 import {
     Connection,
@@ -69,9 +70,11 @@ const Main = () => {
         };
     };
 
+    // @ts-ignore
     const getbalance = async (publicKey) => {
         try {
             const connection = new Connection(clusterApiUrl(SOLANA_NETWORK),"confirmed");
+            // @ts-ignore
             const balance    = await connection.getBalance(new PublicKey(pubkey));
             const _balance   = balance / LAMPORTS_PER_SOL;
             // @ts-ignore
@@ -86,9 +89,10 @@ const Main = () => {
 
     return ( 
         <>
+            <div className="main-container">
             <div className="flex flex-col w-screen h-screen bg-black">
                 <div className="flex flex-col py-24  place-items-center justify-center">
-                    <h1 className="text-5xl font-bold pb-10 text-emerald-300">
+                    <h1 className="title">
                         Guacamoleeee!
                     </h1>
                 </div>
@@ -96,12 +100,12 @@ const Main = () => {
                 {pubkey ? (
                     <div className="flex flex-col place-items-center justify-center">
                         <br />
-                        <h1 className="text-5x1 font-bold pb-5 text-white">
+                        <h1 className="wallet-info">
                             Your wallet number is {pubkey}
                         </h1>
                         <br />
                         <br />
-                        <h1 className="text-5x1 font-bold pb-5 text-white">
+                        <h1 className="wallet-info">
                             Wallet balance: {balance} SOL
                         </h1>
                         <br />
@@ -125,6 +129,7 @@ const Main = () => {
                         <Toaster />
                     </div>
                 )};
+            </div>
             </div>
         </>
     );

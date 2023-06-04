@@ -1,0 +1,38 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background-color: black;
+  }
+  
+  .title {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #3cb371;
+    padding-bottom: 10px;
+  }
+  
+  .wallet-info {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    padding-bottom: 5px;
+  }
+  
+  .button {
+    display: inline-flex;
+    height: 8rem;
+    width: 52rem;
+    justify-content: center;
+    background-color: purple;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .button:hover {
+    background-color: #800080;
+    cursor: pointer;
+  }
+  
